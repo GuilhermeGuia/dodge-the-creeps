@@ -1,12 +1,67 @@
 [gd_scene format=3 uid="uid://b28ufbtxqjgpf"]
 
+[ext_resource type="Texture2D" uid="uid://dygmcva0kkh86" path="res://art/enemyFlyingAlt_1.png" id="1_0b8xr"]
+[ext_resource type="Script" uid="uid://dw3mq75ichkk8" path="res://inimigo.gd" id="1_g45jm"]
+[ext_resource type="Texture2D" uid="uid://k2p577dolrtr" path="res://art/enemyWalking_1.png" id="2_5cs1f"]
+[ext_resource type="Texture2D" uid="uid://hgaehah13mq7" path="res://art/enemyFlyingAlt_2.png" id="2_g45jm"]
+[ext_resource type="Texture2D" uid="uid://ceqjxrf5h2bmj" path="res://art/enemyWalking_2.png" id="3_ekwcj"]
+[ext_resource type="Texture2D" uid="uid://blvyjxm5nya56" path="res://art/enemySwimming_1.png" id="4_eewpo"]
+[ext_resource type="Texture2D" uid="uid://bigxodwjttcas" path="res://art/enemySwimming_2.png" id="5_3af6e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1su0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5cs1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ekwcj")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eewpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3af6e")
+}],
+"loop": true,
+"name": &"nadar",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0b8xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g45jm")
+}],
+"loop": true,
+"name": &"voar",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0b8xr"]
+radius = 35.0
+height = 102.0
+
 [node name="Inimigo" type="RigidBody2D" unique_id=873143488]
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_g45jm")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1330087920]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_1su0k")
+animation = &"voar"
+frame_progress = 0.6075814
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=220992559]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0b8xr")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=935063244]

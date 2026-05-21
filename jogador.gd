@@ -13,7 +13,7 @@ func start(pos):
 func _ready() -> void:
 	# pegar o tamanho da tela do jogador
 	screen_size = get_viewport_rect().size
-	#hide()
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 		velocity.y += 1
 	
 	if velocity.length() > 0:
-		print(velocity)
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
 	else: 
