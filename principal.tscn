@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ckb241dga3ydp"]
+
+[ext_resource type="Script" uid="uid://p86xejitscy3" path="res://principal.gd" id="1_m7tbw"]
+[ext_resource type="PackedScene" uid="uid://h0gvvfumojew" path="res://jogador.tscn" id="2_rrtif"]
+
+[sub_resource type="Curve2D" id="Curve2D_7cuts"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Principal" type="Node2D" unique_id=448814876]
+script = ExtResource("1_m7tbw")
+
+[node name="Jogador" parent="." unique_id=1803841616 instance=ExtResource("2_rrtif")]
+visible = false
+
+[node name="InimigoTimer" type="Timer" parent="." unique_id=606793166]
+wait_time = 0.5
+
+[node name="PontuacaoTimer" type="Timer" parent="." unique_id=607502973]
+
+[node name="InicioTimer" type="Timer" parent="." unique_id=1132055016]
+wait_time = 2.0
+one_shot = true
+
+[node name="InicioPosicao" type="Marker2D" parent="." unique_id=279044926]
+position = Vector2(240, 450)
+
+[node name="InimigoPath" type="Path2D" parent="." unique_id=939307677]
+curve = SubResource("Curve2D_7cuts")
+
+[node name="InimigoSpawnLocalizacao" type="PathFollow2D" parent="InimigoPath" unique_id=1382312997]
+
+[connection signal="hit" from="Jogador" to="." method="game_over"]
+[connection signal="timeout" from="InimigoTimer" to="." method="_on_inimigo_timer_timeout"]
+[connection signal="timeout" from="PontuacaoTimer" to="." method="_on_pontuacao_timer_timeout"]
+[connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
