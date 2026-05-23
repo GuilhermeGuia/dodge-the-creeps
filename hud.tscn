@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dwr0vx3lc1sxo"]
+
+[ext_resource type="Script" uid="uid://n8e6iv7236yb" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://cey7q3ynda82r" path="res://fonts/Xolonium-Regular.ttf" id="2_8sq4i"]
+
+[node name="HUD" type="CanvasLayer" unique_id=945564832]
+script = ExtResource("1_64ctp")
+
+[node name="PontuacaoLabel" type="Label" parent="." unique_id=591058154]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.5
+offset_right = 186.5
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MensagemLabel" type="Label" parent="." unique_id=833954768]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -61.5
+offset_right = 240.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 28
+text = "Dodge the Creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="InicioButton" type="Button" parent="." unique_id=2062721916]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_stretch_ratio = 0.0
+text = "Iniciar"
+
+[node name="MensagemTimer" type="Timer" parent="." unique_id=1706435291]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="InicioButton" to="." method="_on_inicio_button_pressed"]
+[connection signal="timeout" from="MensagemTimer" to="." method="_on_mensagem_timer_timeout"]
