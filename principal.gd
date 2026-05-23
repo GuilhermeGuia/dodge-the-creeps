@@ -3,7 +3,7 @@ var mob_scene = preload("res://inimigo.tscn")
 var score
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(delta: float) -> void:
 	pass
@@ -14,7 +14,7 @@ func game_over() -> void:
 
 func new_game() -> void:
 	score = 0
-	$Player.start($InicioPosicao.position)
+	$Jogador.start($InicioPosicao.position)
 	$InicioTimer.start()
 	
 func _on_inimigo_timer_timeout() -> void:
@@ -24,7 +24,7 @@ func _on_inimigo_timer_timeout() -> void:
 	var inimigo_spawn_localizacao = $InimigoPath/InimigoSpawnLocalizacao
 	inimigo_spawn_localizacao.progress_ratio = randf()
 	
-	inimigo.position = inimigo_spawn_localizacao.rotation
+	inimigo.position = inimigo_spawn_localizacao.position
 	
 	var direction = inimigo_spawn_localizacao.rotation + PI / 2
 	
@@ -35,7 +35,6 @@ func _on_inimigo_timer_timeout() -> void:
 	inimigo.linear_velocity = velocity.rotated(direction)
 	
 	add_child(inimigo)
-	
 
 func _on_pontuacao_timer_timeout() -> void:
 	score += 1
