@@ -11,11 +11,17 @@ func _process(delta: float) -> void:
 func game_over() -> void:
 	$PontuacaoTimer.stop()
 	$InimigoTimer.stop()
+	
+	$HUD.show_game_over()
 
 func new_game() -> void:
 	score = 0
 	$Jogador.start($InicioPosicao.position)
 	$InicioTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("Prepare-se")
+	
+	get_tree().call_group("inimigos", "queue_free")
 	
 func _on_inimigo_timer_timeout() -> void:
 	# criar a instancia de um inimigo
@@ -38,6 +44,7 @@ func _on_inimigo_timer_timeout() -> void:
 
 func _on_pontuacao_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 func _on_inicio_timer_timeout() -> void:
 	$InimigoTimer.start()

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p86xejitscy3" path="res://principal.gd" id="1_m7tbw"]
 [ext_resource type="PackedScene" uid="uid://h0gvvfumojew" path="res://jogador.tscn" id="2_rrtif"]
+[ext_resource type="PackedScene" uid="uid://dwr0vx3lc1sxo" path="res://hud.tscn" id="3_rrtif"]
 
 [sub_resource type="Curve2D" id="Curve2D_7cuts"]
 _data = {
@@ -32,7 +33,10 @@ curve = SubResource("Curve2D_7cuts")
 
 [node name="InimigoSpawnLocalizacao" type="PathFollow2D" parent="InimigoPath" unique_id=1382312997]
 
+[node name="HUD" parent="." unique_id=945564832 instance=ExtResource("3_rrtif")]
+
 [connection signal="hit" from="Jogador" to="." method="game_over"]
 [connection signal="timeout" from="InimigoTimer" to="." method="_on_inimigo_timer_timeout"]
 [connection signal="timeout" from="PontuacaoTimer" to="." method="_on_pontuacao_timer_timeout"]
 [connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
