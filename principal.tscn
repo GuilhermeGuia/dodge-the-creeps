@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p86xejitscy3" path="res://principal.gd" id="1_m7tbw"]
 [ext_resource type="PackedScene" uid="uid://h0gvvfumojew" path="res://jogador.tscn" id="2_rrtif"]
-[ext_resource type="PackedScene" uid="uid://dwr0vx3lc1sxo" path="res://hud.tscn" id="3_rrtif"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="3_rrtif"]
 
 [sub_resource type="Curve2D" id="Curve2D_7cuts"]
 _data = {

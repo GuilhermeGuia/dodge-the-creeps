@@ -1,8 +1,10 @@
 extends Area2D
 signal hit
 
+@export var life = 3
 @export var speed = 200
 var screen_size
+var invecibilidade = false
 
 func start(pos):
 	position = pos
@@ -39,12 +41,37 @@ func _process(delta: float) -> void:
 	# alterando as sprites de animação -> SE o X for diferente de 0
 	# significa -> que o player esta andando pra pra esquerda ou direta
 	# SE o Y for diferente de 0 então o player esta andando pra cima ou para baixo
+	ajustar_sprit_movimento(velocity)
+
+func _on_body_entered(body: Node2D) -> void:
+	levar_dano()
+	
+	
+func ajustar_sprit_movimento(velocity: Vector2):
 	var movimentoEsquerdaOuDireta = velocity.x != 0
 	var movimentoCimaOuBaixo = velocity.y != 0
 	if movimentoEsquerdaOuDireta:
 		ajustar_sprite_movimento_direita_esquerda(velocity)
 	elif movimentoCimaOuBaixo:
 		ajustar_sprite_movimento_cima_baixo(velocity)
+
+func levar_dano():
+	if invecibilidade: return
+	# nao pode tomar dano seguido
+	life -= 1
+	if(life < 1): game_over()
+	else: iniciar_invencibilidade()
+
+func iniciar_invencibilidade():
+	invecibilidade = !invecibilidade
+	ajustar_sprit_invencibilidade()
+	$InvencibilidadeTimer.start()
+
+func game_over():
+	hide()
+	hit.emit()
+	# desativa o estado de colisão do jogador de forma segura
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func mover_jogador(velocity: Vector2, delta: float):
 	position += velocity * delta
@@ -69,8 +96,12 @@ func atualizarAnimacaoJogador(velocity: Vector2):
 func normalizar_velocidade_jogador(velocity: Vector2) -> Vector2:
 	return velocity.normalized() * speed if velocity.length() > 0 else velocity
 
-func _on_body_entered(body: Node2D) -> void:
-	hide()
-	hit.emit()
-	# desativa o estado de colisão do jogador de forma segura
-	$CollisionShape2D.set_deferred("disabled", true)
+func _on_invencibilidade_timer_timeout() -> void:
+	invecibilidade = false
+	ajustar_sprit_invencibilidade()
+	$InvencibilidadeTimer.stop()
+
+func ajustar_sprit_invencibilidade():
+	var sprite = $AnimatedSprite2D
+	if invecibilidade: sprite.modulate = Color(1,1, 1, 0.5)
+	else: sprite.modulate = Color(1, 1, 1, 1) 
