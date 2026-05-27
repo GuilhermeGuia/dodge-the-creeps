@@ -46,7 +46,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	levar_dano()
 	
-	
 func ajustar_sprit_movimento(velocity: Vector2):
 	var movimentoEsquerdaOuDireta = velocity.x != 0
 	var movimentoCimaOuBaixo = velocity.y != 0
@@ -71,6 +70,7 @@ func game_over():
 	hide()
 	hit.emit()
 	# desativa o estado de colisão do jogador de forma segura
+	life = 3
 	$CollisionShape2D.set_deferred("disabled", true)
 
 func mover_jogador(velocity: Vector2, delta: float):
