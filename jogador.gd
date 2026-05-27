@@ -4,7 +4,7 @@ signal hit
 @export var life = 3
 @export var speed = 200
 var screen_size
-var invecibilidade = false
+var invencibilidade = false
 
 func start(pos):
 	position = pos
@@ -56,14 +56,14 @@ func ajustar_sprit_movimento(velocity: Vector2):
 		ajustar_sprite_movimento_cima_baixo(velocity)
 
 func levar_dano():
-	if invecibilidade: return
+	if invencibilidade: return
 	# nao pode tomar dano seguido
 	life -= 1
 	if(life < 1): game_over()
 	else: iniciar_invencibilidade()
 
 func iniciar_invencibilidade():
-	invecibilidade = !invecibilidade
+	invencibilidade = !invencibilidade
 	ajustar_sprit_invencibilidade()
 	$InvencibilidadeTimer.start()
 
@@ -97,11 +97,11 @@ func normalizar_velocidade_jogador(velocity: Vector2) -> Vector2:
 	return velocity.normalized() * speed if velocity.length() > 0 else velocity
 
 func _on_invencibilidade_timer_timeout() -> void:
-	invecibilidade = false
+	invencibilidade = false
 	ajustar_sprit_invencibilidade()
 	$InvencibilidadeTimer.stop()
 
 func ajustar_sprit_invencibilidade():
 	var sprite = $AnimatedSprite2D
-	if invecibilidade: sprite.modulate = Color(1,1, 1, 0.5)
+	if invencibilidade: sprite.modulate = Color(1,1, 1, 0.5)
 	else: sprite.modulate = Color(1, 1, 1, 1) 
