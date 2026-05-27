@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n8e6iv7236yb" path="res://hud.gd" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cey7q3ynda82r" path="res://fonts/Xolonium-Regular.ttf" id="2_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://c0ne784q1fyni" path="res://art/coracao.png" id="3_8sq4i"]
 
 [node name="HUD" type="CanvasLayer" unique_id=945564832]
 script = ExtResource("1_64ctp")
@@ -12,7 +13,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -186.5
 offset_right = 186.5
-offset_bottom = 88.0
+offset_bottom = 78.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 64
@@ -57,6 +58,38 @@ text = "Iniciar"
 [node name="MensagemTimer" type="Timer" parent="." unique_id=1706435291]
 wait_time = 2.0
 one_shot = true
+
+[node name="VidaContainer" type="MarginContainer" parent="." unique_id=744612917]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_top = 20.0
+offset_right = 19.0
+offset_bottom = 60.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VidaAlinhamentoH" type="HBoxContainer" parent="VidaContainer" unique_id=9641465]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Coracao1" type="TextureRect" parent="VidaContainer/VidaAlinhamentoH" unique_id=2127425790]
+layout_mode = 2
+texture = ExtResource("3_8sq4i")
+expand_mode = 2
+
+[node name="Coracao2" type="TextureRect" parent="VidaContainer/VidaAlinhamentoH" unique_id=1033829770]
+layout_mode = 2
+texture = ExtResource("3_8sq4i")
+expand_mode = 2
+
+[node name="coracao3" type="TextureRect" parent="VidaContainer/VidaAlinhamentoH" unique_id=2087186662]
+layout_mode = 2
+texture = ExtResource("3_8sq4i")
+expand_mode = 2
 
 [connection signal="pressed" from="InicioButton" to="." method="_on_inicio_button_pressed"]
 [connection signal="timeout" from="MensagemTimer" to="." method="_on_mensagem_timer_timeout"]
