@@ -49,3 +49,6 @@ func _on_pontuacao_timer_timeout() -> void:
 func _on_inicio_timer_timeout() -> void:
 	$InimigoTimer.start()
 	$PontuacaoTimer.start()
+
+func jogador_levou_dano(vidas: int) -> void:
+	$HUD.atualizar_vida(vidas)

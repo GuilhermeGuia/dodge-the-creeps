@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwr0vx3lc1sxo"]
 
-[ext_resource type="Script" uid="uid://n8e6iv7236yb" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="Script" uid="uid://8pg2aw8iabhx" path="res://hud.gd" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cey7q3ynda82r" path="res://fonts/Xolonium-Regular.ttf" id="2_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://c0ne784q1fyni" path="res://art/coracao.png" id="3_8sq4i"]
 

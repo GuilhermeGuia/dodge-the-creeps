@@ -25,9 +25,22 @@ func show_game_over():
 
 func update_score(score):
 	$PontuacaoLabel.text = str(score)
+
+func atualizar_vida(vidas: int):
+	var coracoes = $VidaContainer/VidaAlinhamentoH.get_children()
+	for i in range(coracoes.size()):
+		var coracao = coracoes[i]
+		if(i >= vidas):
+			coracao.modulate = Color(0.5, 0.5, 0.5)
+
+func voltar_vidas_jogador():
+	var coracoes = $VidaContainer/VidaAlinhamentoH.get_children()
+	for coracao in coracoes:
+		coracao.modulate = Color(1, 1, 1, 1) 
 	
 func _on_inicio_button_pressed() -> void:
 	$InicioButton.hide()
+	voltar_vidas_jogador()
 	start_game.emit()
 
 func _on_mensagem_timer_timeout() -> void:

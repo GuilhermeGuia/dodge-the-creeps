@@ -1,5 +1,6 @@
 extends Area2D
 signal hit
+signal dano
 
 @export var life = 3
 @export var speed = 200
@@ -58,11 +59,12 @@ func levar_dano():
 	if invencibilidade: return
 	# nao pode tomar dano seguido
 	life -= 1
+	dano.emit(life)
 	if(life < 1): game_over()
 	else: iniciar_invencibilidade()
 
 func iniciar_invencibilidade():
-	invencibilidade = !invencibilidade
+	invencibilidade = true
 	ajustar_sprit_invencibilidade()
 	$InvencibilidadeTimer.start()
 
