@@ -37,7 +37,7 @@ Além do conteúdo base da documentação, novas funcionalidades estão sendo ad
 <img src="./art/readme/tela_inicial.png" width="300" align="center" alt="Tela Inicial">
 
 ### HUD
-<img src="./art/readme/tela_inicial.png" width="300" align="center" alt="HUD">
+<img src="./art/readme/tela_prepare_se.png" width="300" align="center" alt="HUD">
 
 ### Sistema de Vida
 <img src="./art/readme/sistema_vidas.png" width="300" align="center" alt="Sistema de vidas">
