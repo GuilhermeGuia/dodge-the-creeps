@@ -13,6 +13,11 @@ point_count = 5
 [node name="Principal" type="Node2D" unique_id=448814876]
 script = ExtResource("1_m7tbw")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1688177253]
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.16470589, 0.43529412, 0.47843137, 1)
+
 [node name="Jogador" parent="." unique_id=1803841616 instance=ExtResource("2_rrtif")]
 visible = false
 
