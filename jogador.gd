@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		velocity.y += 1
 	
 	velocity = normalizar_velocidade_jogador(velocity)
-	atualizarAnimacaoJogador(velocity)
+	atualizar_animacao_jogador(velocity)
 		
 	mover_jogador(velocity, delta)
 	
@@ -88,7 +88,7 @@ func ajustar_sprite_movimento_cima_baixo(velocity: Vector2):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 
-func atualizarAnimacaoJogador(velocity: Vector2):
+func atualizar_animacao_jogador(velocity: Vector2):
 	var jogadorEstaSeMovendo = velocity.length() > 0
 	if jogadorEstaSeMovendo:
 		$AnimatedSprite2D.play()
