@@ -5,7 +5,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
-	pass
+	iniciar_jogo_enter()
+
+func iniciar_jogo_enter():
+	var iniciarJogoPorEnter = Input.is_action_just_pressed("iniciar") && $InicioButton.visible 
+	if iniciarJogoPorEnter:
+		iniciar_jogo()
 
 func show_message(text) -> void:
 	$MensagemLabel.text = text
@@ -37,11 +42,14 @@ func voltar_vidas_jogador():
 	var coracoes = $VidaContainer/VidaAlinhamentoH.get_children()
 	for coracao in coracoes:
 		coracao.modulate = Color(1, 1, 1, 1) 
-	
-func _on_inicio_button_pressed() -> void:
+
+func iniciar_jogo():
 	$InicioButton.hide()
 	voltar_vidas_jogador()
 	start_game.emit()
+
+func _on_inicio_button_pressed() -> void:
+	iniciar_jogo()
 
 func _on_mensagem_timer_timeout() -> void:
 	$MensagemLabel.hide()
